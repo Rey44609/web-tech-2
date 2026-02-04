@@ -32,39 +32,31 @@ section {
   }
 
   .grid-item {
-    /* Muted blue background (not too bright) */
     background-color: #1294ff;
-    /* Light text color to complement the blue background */
     color: #f3f6f9;
 
   } 
 }
 
-/* Responsive: max-width 756px (tablet and below) */
 @media (max-width: 756px) {
   .grid-container {
     grid-template-columns: repeat(6, 1fr);
   }
 
   .grid-item {
-    /* Muted green background (not too bright) */
     background-color: #138347;
-    /* Light text color to complement the green background */
     color: #f3f6f4;
   }
 
 }
 
-/* Responsive: max-width 460px (mobile and below) */
 @media (max-width: 460px) {
   .grid-container {
     grid-template-columns: repeat(1, 1fr);
   }
 
   .grid-item {
-    /* Muted red background (not too bright) */
     background-color: #ff0000;
-    /* Light text color to complement the red background */
     color: #fff5f5;
   }
 }

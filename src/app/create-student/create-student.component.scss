@@ -1,0 +1,71 @@
+.container {
+  min-height: calc(100vh - 80px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+.student-form {
+  width: 100%;
+  max-width: 520px;
+  background: #ffffff;
+  padding: 28px;
+  border-radius: 14px;
+
+
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  label {
+    font-weight: 600;
+    color: #000000;
+  }
+
+  input,
+  select {
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid #000000;
+    font-size: 14px;
+  }
+
+  input:focus,
+  select:focus {
+    outline: none;
+    border-color: #bd46db;
+  }
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 12px;
+
+  button {
+    padding: 10px 18px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+  }
+
+  .cancel {
+    background: #838383;
+    color: #000000;
+  }
+
+  .save {
+    background: #838383;
+    color: #000000;
+  }
+}
