@@ -1,16 +1,34 @@
+<!-- src/app/students/students.component.html -->
+
 <header class="header">
   <h1>Student Management</h1>
-  <button (click)="goToCreateStudent()">Add Student</button>
 </header>
 
 <main class="container">
-  <article class="card" *ngFor="let student of students; let i = index">
-    <div>
-      <h2>{{ student.name }}</h2>
-      <p><strong>Course:</strong> {{ student.course }}</p>
-      <p><strong>Year Level:</strong> {{ student.year }}</p>
-    </div>
+  <div class="title-row">
+    <h2><b>List of Students</b></h2>
+    <button class="add-btn" routerLink="/create-student">
+      <b>Add Student</b>
+    </button>
+  </div>
 
-    <button class="delete" (click)="deleteStudent(i)">Delete</button>
-  </article>
+  <section class="student-list">
+    <article class="student-card" *ngFor="let student of students(); index as i">
+      <div class="student-details">
+        <strong>{{ student.first_name }} {{ student.last_name }}</strong>
+        <p><strong>Age:</strong> {{ student.age ?? '—' }}</p>
+        <p><strong>Year level:</strong> {{ student.year_level ?? '—' }}</p>
+        <p><strong>Course:</strong> {{ student.course ?? '—' }}</p>
+        <p><strong>Email:</strong> {{ student.email ?? '—' }}</p>
+        <p><strong>GPA:</strong> {{ student.gpa ?? '—' }}</p>
+        <p><strong>Status:</strong> {{ student.enrollment_status ?? '—' }}</p>
+      </div>
+
+      <button class="delete-btn" (click)="deleteStudent(student.id)">
+        <b>Delete</b>
+      </button>
+    </article>
+
+    <p *ngIf="students().length === 0">No students found</p>
+  </section>
 </main>

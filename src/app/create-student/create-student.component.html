@@ -1,53 +1,59 @@
-<header class="header">
+<!-- src/app/create-student/create-student.component.html -->
+
+<header class="form-header">
   <h1>Create Student</h1>
 </header>
 
-<main class="container">
-  <form class="student-form">
+<main class="form-container">
+  <form (ngSubmit)="createStudent()">
 
-    <div class="form-group">
-      <label for="studentId">Student ID</label>
-      <input id="studentId" type="text" placeholder="Enter student ID">
-    </div>
+    <label>
+      First Name
+      <input type="text" [(ngModel)]="student.firstName" name="firstName" required />
+    </label>
 
-    <div class="form-group">
-      <label for="firstName">First Name</label>
-      <input id="firstName" type="text" placeholder="Enter first name">
-    </div>
+    <label>
+      Last Name
+      <input type="text" [(ngModel)]="student.lastName" name="lastName" required />
+    </label>
 
-    <div class="form-group">
-      <label for="lastName">Last Name</label>
-      <input id="lastName" type="text" placeholder="Enter last name">
-    </div>
+    <label>
+      Email
+      <input type="email" [(ngModel)]="student.email" name="email" required />
+    </label>
 
-    <div class="form-group">
-      <label for="email">Email</label>
-      <input id="email" type="email" placeholder="Enter email address">
-    </div>
+    <label>
+      Age
+      <input type="number" [(ngModel)]="student.age" name="age" />
+    </label>
 
-    <div class="form-group">
-      <label for="age">Age</label>
-      <input id="age" type="number" placeholder="Enter age">
-    </div>
+    <label>
+      Course
+      <input type="text" [(ngModel)]="student.course" name="course" />
+    </label>
 
-    <div class="form-group">
-      <label for="gpa">GPA</label>
-      <input id="gpa" type="number" step="0.01" placeholder="Enter GPA">
-    </div>
+    <label>
+      GPA
+      <input type="text" [(ngModel)]="student.gpa" name="gpa" />
+    </label>
 
-    <div class="form-group">
-      <label for="status">Enrollment Status</label>
-      <select id="status">
-        <option value="">Select status</option>
-        <option>Enrolled</option>
-        <option>Not Enrolled</option>
-        <option>Graduated</option>
+    <label>
+      Year Level
+      <input type="text" [(ngModel)]="student.yearLevel" name="yearLevel" />
+    </label>
+
+    <label>
+      Enrollment Status
+      <select [(ngModel)]="student.status" name="status" required>
+        <option value="" disabled selected>Select status</option>
+        <option value="Enrolled">Enrolled</option>
+        <option value="Not Enrolled">Not Enrolled</option>
       </select>
-    </div>
+    </label>
 
-    <div class="form-actions">
-      <button type="button" class="cancel">Cancel</button>
-      <button type="submit" class="save">Save</button>
+    <div class="actions">
+      <a routerLink="/students" class="back-btn">Back</a>
+      <button type="submit" class="create-btn">Create Student</button>
     </div>
 
   </form>

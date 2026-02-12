@@ -1,45 +1,115 @@
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px;
-  background:#a70101;
-  color: white;
 
-  button {
-    padding: 10px 16px;
-    border: none;
-    background: #ff000093;
-    color: #000;
-    border-radius: 6px;
-    cursor: pointer;
+
+.container {
+  max-width: 900px;
+  margin: 2rem auto;          
+  padding: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;         
+  gap: 1.5rem;
+}
+
+// STUDENT LIST - center cards
+.student-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  align-items: center;     
+  @media (min-width: 1024px) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    justify-content: center;     
   }
 }
 
-.container {
+// STUDENT CARD
+.student-card {
+  background-color: $bg-light;
+  padding: 2rem 1.5rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 12px $card-shadow;
+  position: relative;
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  padding: 30px;
-  align-items: center;
-}
-
-.card {
+  transition: transform 0.2s ease;
   width: 100%;
-  max-width: 500px;
-  background: #ffffff;
-  padding: 20px;
-  border-radius: 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  max-width: 450px;           // optional: limit card width
+  align-items: center;        // center contents inside card
 
-  .delete {
-    background: #ff0000;
-    color: white;
+  &:hover {
+    transform: translateY(-3px);
+  }
+
+  @media (max-width: 768px) {
+    padding: 1.5rem 1rem;
+  }
+
+  .student-details {
+    p {
+      margin: 0.25rem 0;
+      font-size: 0.95rem;
+      color: $text-gray;
+
+      @media (max-width: 768px) {
+        font-size: 0.875rem;
+      }
+    }
+
+    strong {
+      color: $text-dark;
+    }
+  }
+
+  // Move the "Save/Add" button below the details
+  .add-btn {
+    margin-top: 1.5rem;        
+    align-self: center;         
+    background-color: $secondary-color;
+    color: $text-light;
     border: none;
-    padding: 8px 14px;
-    border-radius: 6px;
+    border-radius: 0.5rem;
+    padding: 0.7rem 1.4rem;    
+    font-size: 1rem;
+    font-weight: bold;
     cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.15s ease;
+
+    &:hover {
+      background-color: darken($secondary-color, 10%);
+      transform: scale(1.05);
+    }
+
+    @media (max-width: 768px) {
+      padding: 0.6rem 1.2rem;
+      font-size: 0.95rem;
+    }
+  }
+
+  .delete-btn {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    background-color: $danger-color;
+    color: $text-light;
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.75rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.15s ease;
+
+    &:hover {
+      background-color: darken($danger-color, 10%);
+      transform: scale(1.05);
+    }
+
+    @media (max-width: 768px) {
+      padding: 0.35rem 0.7rem;
+      font-size: 0.7rem;
+    }
   }
 }

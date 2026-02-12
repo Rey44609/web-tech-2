@@ -1,29 +1,46 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+// src/app/students/students.component.ts
+
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { StudentsService } from '../../services/students/students.service';
+import { GetStudent } from '../../models/student.model';
 
 @Component({
   selector: 'app-students',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './students.component.html',
   styleUrls: ['./students.component.scss']
 })
 export class StudentsComponent {
+  private readonly studentsService = inject(StudentsService);
 
-  students = [
-    { name: 'Rey Maria', course: 'SBMA', year: '3rd Year' },
-    { name: 'Carlo Patcho', course: 'NURSING', year: '2nd Year' },
-    { name: 'Lizandro Yap', course: 'MEDTECH', year: '4th Year' }
-  ];
+  studentsList: GetStudent[] = [];
 
-  constructor(private router: Router) {}
-
-  goToCreateStudent() {
-    this.router.navigate(['/create-student']);
+  constructor() {
+    this.loadStudents();
   }
 
-  deleteStudent(index: number) {
-    this.students.splice(index, 1);
+  students() {
+    return this.studentsList;
+  }
+
+  async loadStudents() {
+  try {
+    const data = await this.studentsService.getStudents(); // await the promise
+    this.studentsList = data;
+  } catch (err) {
+    console.error('Failed to load students', err);
+  }
+}
+
+  async deleteStudent(id: string) {
+    try {
+      await this.studentsService.deleteStudent(id);
+      this.studentsList = this.studentsList.filter(student => student.id !== id);
+    } catch (error) {
+      console.error('Failed to delete student', error);
+    }
   }
 }
