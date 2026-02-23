@@ -1,4 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+
+// SCSS Variables
+$bg-light: #ffffff;
+$card-shadow: rgba(0, 0, 0, 0.1);
+$text-gray: #666666;
+$text-dark: #333333;
+$text-light: #ffffff;
+$secondary-color: #007bff;
+$danger-color: #dc3545;
+
 * {
  box-sizing: border-box;
  margin: 0;

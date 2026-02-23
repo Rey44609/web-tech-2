@@ -5,6 +5,10 @@
 </header>
 
 <main class="form-container">
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+
   <form (ngSubmit)="createStudent()">
 
     <label>
@@ -45,15 +49,16 @@
     <label>
       Enrollment Status
       <select [(ngModel)]="student.status" name="status" required>
-        <option value="" disabled selected>Select status</option>
-        <option value="Enrolled">Enrolled</option>
-        <option value="Not Enrolled">Not Enrolled</option>
+        <option value="Active">Active</option>
+        <option value="Inactive">Inactive</option>
       </select>
     </label>
 
     <div class="actions">
       <a routerLink="/students" class="back-btn">Back</a>
-      <button type="submit" class="create-btn">Create Student</button>
+      <button type="submit" class="create-btn" [disabled]="isLoading">
+        {{ isLoading ? 'Creating...' : 'Create Student' }}
+      </button>
     </div>
 
   </form>

@@ -1,14 +1,14 @@
 // src/models/student.model.ts
 
 export interface GetStudent {
-  id: string;
+  id: number;
   first_name: string;
   last_name: string;
   email: string;
-  age: number;
-  course: string;
-  year_level: number;
-  gpa: number;
+  age: number | null;
+  course: string | null;
+  year_level: number | null;
+  gpa: number | null;
   enrollment_status: string;
   created_at: string;
 }
